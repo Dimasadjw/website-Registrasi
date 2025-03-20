@@ -59,6 +59,14 @@
                 width: 250px;
             }
         }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: auto;
+        }
     </style>
 </head>
 
@@ -71,7 +79,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a href="#" class="nav-link" class="fas fa-home">Home</a></li>
                     <li class="nav-item"><a href="#" class="nav-link" class="fas fa-info-circle">About</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"  class="fas fa-envelope">Contact</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" class="fas fa-envelope">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -97,7 +105,8 @@
         </div>
         <div class="offcanvas-body">
             <ul class="nav flex-column">
-                <li class="nav-item"><a href="#" class="nav-link text-white" class="fas fa-tachometer-alt">Dashboard</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-white" class="fas fa-tachometer-alt">Dashboard</a>
+                </li>
                 <li class="nav-item"><a href="#" class="nav-link text-white" class="fas fa-cog">Settings</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white" class="fas fa-sign-in-alt">Login</a></li>
             </ul>
@@ -108,13 +117,14 @@
     <div class="d-flex">
         <nav class="bg-dark text-white p-3 d-none d-lg-block" style="width: 250px; min-height: 100vh;">
             <ul class="nav flex-column">
-                <li class="nav-item"><a href="#" class="nav-link text-white"class="fas fa-tachometer-alt">Dashboard</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white"class="fas fa-cog">Settings</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-white" class="fas fa-tachometer-alt">Dashboard</a>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link text-white" class="fas fa-cog">Settings</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white" class="fas fa-sign-in-alt">Login</a></li>
             </ul>
         </nav>
         <div class="container">
-            <h2 class="form-title">Registrasi</h2>
+            <h2 class="form-title mt-3">Registrasi</h2>
             <form id="registrationForm">
                 <div class="mb-3">
                     <label for="fullname" class="form-label">Nama Lengkap</label>
@@ -151,81 +161,85 @@
                 <button type="submit" class="btn btn-secondary" id="submitBtn" disabled>Daftar</button>
             </form>
         </div>
-        <script>
-            document.getElementById('registrationForm').addEventListener('input', function () {
-                let isValid = true;
+    </div>
+    <footer>
+        <p>&copy;<b>2025 IT PNM Summit DIMAS ADJIE WIBOWO | 243307042</b></p>
+    </footer>
+    <script>
+        document.getElementById('registrationForm').addEventListener('input', function () {
+            let isValid = true;
 
-                // Nama Lengkap minimal 3 karakter
-                let fullname = document.getElementById('fullname').value;
-                if (fullname.length < 3) {
-                    document.getElementById('fullnameError').innerText = "Nama minimal 3 karakter";
-                    isValid = false;
-                } else {
-                    document.getElementById('fullnameError').innerText = "";
-                }
+            // Nama Lengkap minimal 3 karakter
+            let fullname = document.getElementById('fullname').value;
+            if (fullname.length < 3) {
+                document.getElementById('fullnameError').innerText = "Nama minimal 3 karakter";
+                isValid = false;
+            } else {
+                document.getElementById('fullnameError').innerText = "";
+            }
 
-                // validasi email
-                let email = document.getElementById('email').value;
-                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailPattern.test(email)) {
-                    document.getElementById('emailError').innerText = "Format email tidak valid";
-                    isValid = false;
-                } else {
-                    document.getElementById('emailError').innerText = "";
-                }
+            // validasi email
+            let email = document.getElementById('email').value;
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById('emailError').innerText = "Format email tidak valid";
+                isValid = false;
+            } else {
+                document.getElementById('emailError').innerText = "";
+            }
 
-                // Password minimal 8 karakter
-                let password = document.getElementById('password').value;
-                if (password.length < 8) {
-                    document.getElementById('passwordError').innerText = "Password minimal 8 karakter";
-                    isValid = false;
-                } else {
-                    document.getElementById('passwordError').innerText = "";
-                }
+            // Password minimal 8 karakter
+            let password = document.getElementById('password').value;
+            if (password.length < 8) {
+                document.getElementById('passwordError').innerText = "Password minimal 8 karakter";
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').innerText = "";
+            }
 
-                // Konfirmasi password harus sama
-                let confirmPassword = document.getElementById('confirmPassword').value;
-                if (confirmPassword !== password) {
-                    document.getElementById('confirmPasswordError').innerText = "Password tidak cocok";
-                    isValid = false;
-                } else {
-                    document.getElementById('confirmPasswordError').innerText = "";
-                }
+            // Konfirmasi password harus sama
+            let confirmPassword = document.getElementById('confirmPassword').value;
+            if (confirmPassword !== password) {
+                document.getElementById('confirmPasswordError').innerText = "Password tidak cocok";
+                isValid = false;
+            } else {
+                document.getElementById('confirmPasswordError').innerText = "";
+            }
 
-                // Tanggal lahir harus sebelum 2006
-                let dob = new Date(document.getElementById('dob').value);
-                let minDate = new Date('2006-01-01');
-                if (dob >= minDate) {
-                    document.getElementById('dobError').innerText = "Tanggal lahir harus sebelum 2006";
-                    isValid = false;
-                } else {
-                    document.getElementById('dobError').innerText = "";
-                }
+            // Tanggal lahir harus sebelum 2006
+            let dob = new Date(document.getElementById('dob').value);
+            let minDate = new Date('2006-01-01');
+            if (dob >= minDate) {
+                document.getElementById('dobError').innerText = "Tanggal lahir harus sebelum 2006";
+                isValid = false;
+            } else {
+                document.getElementById('dobError').innerText = "";
+            }
 
-                // Nomor HP format Indonesia (+62xxxxxxxxxx)
-                let phone = document.getElementById('phone').value;
-                let phonePattern = /^\+62[0-9]{8,11}$/;
-                if (!phonePattern.test(phone)) {
-                    document.getElementById('phoneError').innerText = "Format nomor HP tidak valid";
-                    isValid = false;
-                } else {
-                    document.getElementById('phoneError').innerText = "";
-                }
+            // Nomor HP format Indonesia (+62xxxxxxxxxx)
+            let phone = document.getElementById('phone').value;
+            let phonePattern = /^\+62[0-9]{8,11}$/;
+            if (!phonePattern.test(phone)) {
+                document.getElementById('phoneError').innerText = "Format nomor HP tidak valid";
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').innerText = "";
+            }
 
-                submitBtn.disabled = !isValid;
-                submitBtn.classList.toggle('btn-primary', isValid);
-                submitBtn.classList.toggle('btn-secondary', !isValid);
-            });
+            submitBtn.disabled = !isValid;
+            submitBtn.classList.toggle('btn-primary', isValid);
+            submitBtn.classList.toggle('btn-secondary', !isValid);
+        });
 
-            document.getElementById('registrationForm').addEventListener('submit', function (event) {
-                event.preventDefault();
-                alert('Registrasi berhasil!');
-                this.reset();
-                document.getElementById('submitBtn').disabled = true;
-                window.location.href = 'dashboard.html';
-            });
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Registrasi berhasil!');
+            this.reset();
+            document.getElementById('submitBtn').disabled = true;
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
